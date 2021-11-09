@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>Menadżer haseł</title>
+
+        <script>
+            let loginArray = new Map([
+                ['root', 'root'],
+                ['admin', 'admin']
+            ]);
+
+            function loginIn()
+            {
+                const login = form1.loginMemory;
+                const password = form1.passwordMemory;
+
+                console.log(`Login: ${login.value}`);
+                console.log(`Hasło: ${password.value}`);
+
+                if(!loginArray.has(login.value) || loginArray.get(login.value) != password.value) {
+                    alert("Wprowadzono nieprawidłowe hasło.");
+                } else {
+                    alert("Logowanie zakończone pomyślnie");
+                    document.location.href = "panel.html";
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="panel">
+            <h2>Panel logowania:</h2>
+
+            <form id="form1" onSubmit="return false;">
+                <fieldset>
+                    <legend>Logowanie</legend>
+
+                    <input type="text" id="loginMemory" placeholder="Login">
+                    <input type="password" id="passwordMemory" placeholder="Hasło">
+
+                    <button id="submit-button" onClick="loginIn()">Zaloguj</button>
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
